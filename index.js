@@ -50,15 +50,7 @@ const interval = setInterval(() => {
 
                     // Reinstall the server after a delay so players are warned
                     setTimeout(function () {
-                        ptero.reInstallServer(config.serverID).then((success) => {
-                            if (!success) { console.error("There was a problem!"); return; }
-
-                            fs.writeFile('versionCache.txt',
-                                latestBuild, function(err) {
-                                    if (err) console.error(err);
-                                    console.info("Updated build version");
-                                });
-                        }).catch((err) => {
+                        ptero.reInstallServer(config.serverID).catch((err) => {
                             console.error("THERE WAS AN ERROR WHILE RE-INSTALLING!", err);
                         });
                     }, 5000);
